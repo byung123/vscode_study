@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- input-box의 높이 넓이를 부모의 것의 100%를 다 채움 -->
+    <style>
+        .username-input-box {
+            position: relative;
+            width: 500px;
+            height: 50px;
+        }
+
+        .username-input {
+            box-sizing: border-box;
+            outline: none;
+            border-radius: 10px;
+            border: 1px solid #dbdbdb;
+            padding: 10px 80px 10px 10px;
+            width: 100%;
+            height: 100%;
+            font-size: 18px;
+        }
+
+        .duplicate-button {
+            transform: translate(-50%);
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            box-sizing: border-box;
+            border-radius: 6px;
+            border: 1px solid #dbdbdb;
+            padding: 5px;
+            background-color: transparent;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="username-input-box"> <!--input box는 상속이 안돼서 div로 두 개를 묶어둠 -->
+        <input type="text" class="username-input">
+        <button class="duplicate-button">중복확인</button>
+    </div>
+</body>
+</html>

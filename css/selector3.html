@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인접형제선택자</title>
+    <!-- 인접 선택자 : h1과 근접한 div의 것에 색깔 적용한다 -->
+    <!-- 형제 선택자 : h1의 형제 모두 적용된다 -->
+    <!-- h1 ~ * : h1 형제들중 모든 형제들을 뜻함 -->
+    <style>
+        main > h1 + div > h1 {
+            color: pink;
+        }
+
+        main > h1 ~ * > h1 {
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>제목1</h1>
+        <!-- <p>test</p> --> <!-- 인접선택자일 땐, 중간에 뭐가 하나 있으면 적용이 안된다-->
+        <div>
+            <h1>제목2</h1>
+        </div>
+        <p>test2</p> <!-- 형제 선택자는 중간에 뭐가 있어도 형제면 모두 적용이 된다.-->
+        <div>
+            <h1>제목3</h1>
+        </div>
+    </main>
+</body>
+</html>

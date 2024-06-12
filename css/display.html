@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- span과 같이 인라인 형태는 높이와 너비를 지정해줘도 안의 콘텐츠에 따라 크기가 정해진다 -->
+    <!-- 따라서 display를 이용해 block이나 inline-block으로 만들면 조절 가능하게 된다 -->
+    <!-- inline-block은 크기가 적당하면 옆 공간에 붙여서 넣을 수 있다 -->
+    <style>
+        div {
+            width: 800px;
+            height: 100px;
+            background-color: yellow;
+        }
+
+        span {
+            display: inline-block;
+            width: 800px;
+            height: 100px;
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+    <div>레이아웃을 구성하는 css 박스 모델</div>
+    <span>레이아웃을 구성하는 css 박스 모델</span>
+    <span>레이아웃을 구성하는 css 박스 모델</span>
+</body>
+</html>

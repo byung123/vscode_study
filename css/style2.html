@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- class명을 호출할땐 앞에 .을 붙임-->
+    <!-- id명을 호출할땐 앞에 #을 붙임-->
+    <!-- !important 옵션은 무조건 그것이 우선순위가 됨 = 하지만 개발할 때 안씀(쓰면 귀찮아질 수 있음)-->
+    <!-- 인라인스타일, !important, id 스타일 사용x, 스타일은 거의 무조건 class로 설정 -> 프론트앤드끼리 약속 -->
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black; 
+        }
+
+        .box { 
+            background-color: green; 
+        }
+
+        .box2 {
+            background-color: purple;
+        }
+
+        #box1 {
+            background-color: blue;
+        }
+
+        #box3 {
+            background-color: red;
+        }
+
+        h1, .text-box {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box1"></div>   <!-- 초록색이 아닌 파란색으로 잡힘 : class보다는 id가 우선순위가 높다-->
+    <div class="box box2"></div>   <!-- 클래스는 띄어쓰기하고 더 입력 가능, 보라색으로됨(box를 box2로 덮어썼기 때문)-->
+    <div id="box3"></div>   
+    <!-- 참고로 클래스명은 언더바, 카멜표기법을 사용하지 않음-->
+    <p class="text-box"></p>
+    <h1></h1>
+</body>
+</html>

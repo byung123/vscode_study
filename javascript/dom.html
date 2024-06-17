@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main-box">
+        <div id="input1">
+            <input type="text">
+        </div>
+        <div id="input2">
+            <input type="text">
+        </div>
+    </div>
+    <div>
+        <button onclick="handleButtonClick(event)">확인</button>
+    </div>
+    <script>
+        const bodyList = document.getElementsByTagName("body"); // 태그를 사용해 가져오는 방법
+        const body = bodyList[0]; // body 는 한 개 밖에 없음
+        const divList = document.getElementsByTagName("div") // 태그로 가져오는 2번 째 방법
+        const mainBoxList = body.getElementsByClassName("main-box") // 앞에 .을 안붙임(선택자로 들고 오는게 아니기 때문)
+        const input1 = mainBoxList[0]
+            .getElementsByTagName("div")[0]
+            .getElementsByTagName("input")[0];
+        const input1_1 = document.getElementsByTagName("input")[0]; // 이렇게도 가능
+        const [ input1_1_1 ] = document.getElementById("input1").getElementsByTagName("input");
+
+        console.log(bodyList);
+        console.log({body}); // 객체로 만들어서 보면(키 값: 밸류) -> html에서 f12에서 요소 확인 가능
+        console.log({mainBox: divList[0]});
+        console.log({mainBox: mainBoxList[0]});
+        console.log(input1_1_1)
+
+        ////////////////////////////////////////////////////////////////////////////
+        // <<< QuerySelector >>>
+
+        const input1_1_1_1 = document.querySelector("body #input1 > input");
+        console.log(input1_1_1_1);
+        const inputList = document.querySelectorAll("input"); // all로 가져오면 전부 list 형태임
+        console.log(inputList);
+        const input1_1_1_1_1 = document.querySelector("input"); // input이 2개이지ㅣ만 querysellector를 사용하면 첫 번째 것을 불러온다
+        
+        const button = document.querySelector("button");
+
+        console.log(button.getAttribute("onclick"));
+        console.log(button.setAttribute("onclick", "alert('text')"))
+        console.log(button.onclick); // get, set 쓸 필요없이 바로 출력 
+        button.onclick = () => { // 따로 함수 정의를 만들 필요없이 바로 속성을 이용해 정의 가능
+            alert("test2");
+        }
+        // button.onclick = handleButtonClick; 로도 가능
+
+        function handleButtonClick(e) { // 다른방법
+            console.log(e);
+            const [ input_1, input_2 ] = document.querySelectorAll("input");
+            alert(`name: ${input_1.value}\nage: ${input_2.value}`);
+        }
+
+    </script>
+</body>
+</html>

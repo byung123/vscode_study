@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer {
+            background-color: lightblue;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .middle {
+            background-color: lightgreen;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .inner {
+            background-color: coral;
+            padding: 50px;
+            text-align: center;
+        }
+
+        div:hover {
+            background-color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="outer">
+        외부 vox
+        <div class="middle">
+            중간 vox
+            <div class="inner">
+                내부box
+            </div>
+        </div>
+    </div>
+    <script> // 캡쳐링과 버블링
+        // const outer = document.querySelector(".outer");
+        // const middle = document.querySelector(".middle");
+        // const inner = document.querySelector(".inner");
+
+        // // 캡쳐링 - 부모에서 자식으로 전파 (이벤트가 전파되는 순서)
+        // outer.addEventListener("click", () => alert("outer 캡쳐링"), true);
+        // middle.addEventListener("click", () => alert("middle 캡쳐링"), true);
+        // inner.addEventListener("click", () => alert("inner 캡쳐링"), true);
+
+        // //버블링 - 자식에서 부모로 전파
+        // outer.addEventListener("click", () => alert("outer 버블링"));
+        // middle.addEventListener("click", () => alert("middle 버블링"));
+        // inner.addEventListener("click", () => alert("inner 버블링"));
+
+
+        outer.addEventListener("click", () => alert("outer 버블링"));
+        middle.addEventListener("click", (e) => {
+            e.stopImmediatePropagation(); // 이벤트 전파 방지, middle객체에 등록된 다른 이벤트의 실행도 막는다
+            alert("middle 버블링");
+        });
+
+        inner.addEventListener("click", (e) => {
+            e.stopPropagation(); 
+            alert("inner 버블링");
+        });
+
+        inner.addEventListener("click", (e) => {
+            e.stopImmediatePropagation(); // 이벤트 전파 방지(밑으로 전파되는 것을 막겠다)
+            alert("inner 버블링");
+        });
+
+
+    </script>
+</body>
+</html>

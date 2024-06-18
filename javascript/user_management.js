@@ -24,7 +24,7 @@ function renderTable() {
     userTableBody.innerHTML = userList.map(({id, name, username, password}, index) => {
         return `
             <tr>
-                <th><input type="checkbox" onchange="handleUserCheck(event)"></th>
+                <th><input type="checkbox" onchange="handleUserCheck(event)" value="${id}"></th>
                 <td>${index + 1}</td>
                 <td>${id}</td>
                 <td>${name}</td>
@@ -56,14 +56,28 @@ function handleUserInputKeyDown(e) {
             passwordInput.focus();
         }
         if(e.target.name === "password") {
-            userList = [ ...userList, {...user, id: getNewId() } ];
+            if(inputMode === 1) {
+                userList = [ ...userList, {...user, id: getNewId() } ];
+            }
+
+            if(inputMode === 2) {
+                let findIndex = -1;
+                for(let i = 0; i < userList.length; i++) {
+                    if(userList[i].id === user.id) {
+                        findIndex = i;
+                        break;
+                    }
+                }
+                if(findIndex === -1) {
+                    alert("사용자 정보 수정 중 오류 발생. 관리자에세 문의하세요");
+                    return;
+                }
+                userList[findIndex] = user;
+            }
 
             saveUserList();  // 로컬에 저장
             renderTable();
-
-            nameInput.value = emptyUser.name;
-            usernameInput.value = emptyUser.username;
-            passwordInput.value = emptyUser.password;
+            clearInputValue();
 
             nameInput.focus();
         }
@@ -96,5 +110,48 @@ function getNewId() {
 }
 
 function handleUserCheck(e) {
-      e.target.checked;
+      const checkBoxList = document.querySelectorAll("input[type='checkbox']");
+      for(let checkBox of checkBoxList) {   // 자바 스크립트 반복문은 : 대신 of를 쓴다
+        if(checkBox === e.target) {
+            continue;
+        }
+        checkBox.checked = false;
+      }
+
+      if(e.target.checked) {
+        inputMode = 2;
+        const [findUser] = userList.filter(user => user.id === parseInt(e.target.value));
+        setInputValue(findUser);
+        user = {
+            ...findUser
+        }
+        return;
+      }
+
+      inputMode = 1;
+      clearInputValue();
+}
+
+function setInputValue(user) {
+    const nameInput = document.querySelector(".name-input");
+    const usernameInput = document.querySelector(".username-input");
+    const passwordInput = document.querySelector(".password-input");
+
+    nameInput.value = user.name;
+    usernameInput.value = user.username;
+    passwordInput.value = user.password;
+}
+
+function clearInputValue() {
+    const nameInput = document.querySelector(".name-input");
+    const usernameInput = document.querySelector(".username-input");
+    const passwordInput = document.querySelector(".password-input");
+    inputMode = 1;
+          
+    nameInput.value = emptyUser.name;
+    usernameInput.value = emptyUser.username;
+    passwordInput.value = emptyUser.password;
+    user = {
+         ...emptyUser
+     }
 }

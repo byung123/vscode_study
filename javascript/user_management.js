@@ -1,5 +1,5 @@
 const names = [ "김준일", "김준이", "김준삼"];
-console.log(names.join(""));
+console.log(names.join("-"));
 
 // inputMode = 1 > 추가
 // inputMode = 2 > 수정
@@ -30,7 +30,7 @@ function renderTable() {
                 <td>${name}</td>
                 <td>${username}</td>
                 <td>${password}</td>
-                <th><button onclick="deleteUser(event)", value="${id}">삭제</button></th>
+                <th><button onclick="deleteUser(event)" value="${id}">삭제</button></th>
             </tr>
         `;
     }).join("");

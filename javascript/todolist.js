@@ -33,7 +33,7 @@ function addTodo() {
 
 function createNewId() {
     const todoIdList = todoList.map(todo => todo.id);
-    const maxId = todoIdList.length ? 0 : Math.max.apply(null, todoIdList);
+    const maxId = !todoIdList.length ? 0 : Math.max.apply(null, todoIdList);
     return maxId + 1; 
 }
 

@@ -6,8 +6,17 @@
     <title>Document</title>
     <!-- box-sizing으로 경계선(border)까지 포함시킬건지, contewnts 부분만 적용할건지 적용 -->
     <style>
-        div {
+        .b {
             box-sizing: border-box;
+            margin: 50px;
+            border: 5px solid black;
+            padding: 30px;
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+
+        .a {
             margin: 50px;
             border: 5px solid black;
             padding: 30px;
@@ -18,6 +27,7 @@
     </style>
 </head>
 <body>
-    <div>box</div>
+    <div class="b">box</div>
+    <div class="a">box2</div>
 </body>
 </html>
